@@ -29,13 +29,16 @@ namespace ASP.NETCore_ioptions_2021_11nov_08
                                                  //       services.AddSingleton<IOptions<Person>>()
                                                  //   (****i think it's singleton, but maybe I
                                                  //   wrong)
+            services.Configure<Company>(config.GetSection("Company"));
+                                                 // services.Configure<Company>() - actually it
+                                                 //   will not be used here
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseDeveloperExceptionPage();
-            app.UseMiddlware<PersonMiddleware>();
+            app.UseMiddleware<PersonMiddleware>();
         }
         class Person
         {
