@@ -19,29 +19,65 @@ namespace ASP.NETCore_errors_2021_11nov_03
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+//      public void Configure_(IApplicationBuilder app, IWebHostEnvironment env)
+//      {
+//          env.EnvironmentName = "Production";
+//          if (env.IsDevelopment())
+//          {
+//              app.UseDeveloperExceptionPage();  // app.UseDeveloperExceptionPage() - it enables
+//                                                //   good looking page with occured exceptions
+//                                                //   that were not catched
+//                                                //
+//                                                //   It also has a overload where you can pass
+//                                                //     an UseDeveloperExceptionPageOptions class
+//                                                //     instance
+//                                                //
+//                                                //   Without this middleware component, user
+//                                                //     will receive HTTP ERROR 500
+//                                                //
+//          }
+//
+//          app.Use((context, next) =>
+//          {
+//              //context.Response.WriteAsync("Hello\n");  // ...WriteAsync() - but, for some
+//              return next.Invoke();                      //   reasons, 
+//          });
+//          app.Run(CalculationPage);
+//      }
+        public Task CalculationPage(HttpContext context)
+        {
+            int a = 6;
+            int b = 0;
+            return context.Response.WriteAsync($"{a} / {b} = {a / b}");
+        }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            env.EnvironmentName = "Production";
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();  // app.UseDeveloperExceptionPage() - it enables
-                                                  //   good looking page with occured exceptions
-                                                  //   that were not catched
-                app.UseDeveloperExceptionPage(new DeveloperExceptionPageOptions()
-                {
-
-                })
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");  // app.UseExceptionHandler() - the middleware
+                                                    //   catches exceptions, logs them, and
+                                                    //   re-execute the request in an altrenate
+                                                    //   pipeline. The request will nob be
+                                                    //   re-executed if the request has already
+                                                    //   started
+                                                    //
+                                                    //   It has an overload with
+                                                    //     ExceptionHandlerOptions parameter
             }
 
-            app.Use((context, next) =>
-            {
-                //context.Response.WriteAsync("Hello\n");  // ...WriteAsync() - but, for some
-                return next.Invoke();                      //   reasons, 
-            });
+            app.Map("/error", ErrorPage);
+            app.Run(CalculationPage);
+        }
+        public void ErrorPage(IApplicationBuilder app)
+        {
             app.Run((context) =>
             {
-                int a = 6;
-                int b = 0;
-                return context.Response.WriteAsync($"{a} / {b} = {a / b}");
+                return context.Response.WriteAsync("An exception has occured!");
             });
         }
     }

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "/FIWznMh9E73aM/KJhTZcIfu/IGx3E31A+5hb3dTrVaMBk1IbOagR9P70k+hTa9l27HR0gIuXiW0fK3AAqtCPg==",
+  "success": true,
+  "projectFilePath": "/media/terrobyte/dev_2021-08aug-10/c#-2021_08aug_10/NETDocs-2021_10oct_20/ASP.NETCore-ioptions-2021_11nov_08/ASP.NETCore-ioptions-2021_11nov_08.csproj",
+  "expectedPackageFiles": [
+    "/home/art/.nuget/packages/microsoft.aspnetcore.http.abstractions/2.2.0/microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "/home/art/.nuget/packages/microsoft.aspnetcore.http.features/2.2.0/microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "/home/art/.nuget/packages/microsoft.extensions.primitives/2.2.0/microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "/home/art/.nuget/packages/system.memory/4.5.1/system.memory.4.5.1.nupkg.sha512",
+    "/home/art/.nuget/packages/system.runtime.compilerservices.unsafe/4.5.1/system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "/home/art/.nuget/packages/system.text.encodings.web/4.5.0/system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

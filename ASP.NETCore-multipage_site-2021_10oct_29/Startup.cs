@@ -30,7 +30,10 @@ namespace ASP.NETCore_multipage_site_2021_10oct_29
 
             //My customization:
 
-            app.Map("/about", AboutPage);
+            app.Map("/about", AboutPage);              // app.Map("/about", ...) - forkes the
+                                                       //   request pipeline to new branch
+                                                       //   (new branch is configured in
+                                                       //   AboutPage())
             app.Map("/spreadsheet", SpreadsheetPage);  // AboutPage(), SpreadsheetPage(), ... - I
             app.Map("/fork", ForkPage);                //   didn't do it asyncronous there
             app.Map("/detailedInfo", DetailedInfoPage);
